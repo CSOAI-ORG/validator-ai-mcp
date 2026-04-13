@@ -1,0 +1,10 @@
+name: validator-ai-mcp
+description: "MEOK AI Labs — validator-ai-mcp"
+vendor: MEOK AI Labs
+homepage: https://meok.ai
+repository: https://github.com/CSOAI-ORG/validator-ai-mcp
+license: MIT
+categories: [Developer Tools, Validation]
+tags: [configuration, config-validation, yaml-validation, json-schema, settings]
+runtime: python
+entrypoint: server.py
