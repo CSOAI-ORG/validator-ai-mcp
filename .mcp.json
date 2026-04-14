@@ -1,20 +1,52 @@
 {
   "name": "validator-ai-mcp",
-  "description": "MEOK AI Labs \u2014 validator-ai-mcp",
-  "vendor": "MEOK AI Labs",
-  "homepage": "https://meok.ai",
-  "repository": "https://github.com/CSOAI-ORG/validator-ai-mcp",
-  "runtime": "python",
-  "entrypoint": "server.py",
+  "description": "validator-ai-mcp \u2014 Built by [MEOK AI Labs](https://meok.ai)",
+  "version": "1.0.0",
   "tools": [
-    "run"
-  ],
-  "categories": [
-    "Developer Tools",
-    "Validation"
-  ],
-  "pricing": {
-    "free": "50 calls/day",
-    "pro": "$9/mo"
-  }
+    {
+      "name": "validate_email",
+      "description": "",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "email": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "email"
+        ]
+      }
+    },
+    {
+      "name": "validate_url",
+      "description": "",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "url"
+        ]
+      }
+    },
+    {
+      "name": "validate_json",
+      "description": "",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "text": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "text"
+        ]
+      }
+    }
+  ]
 }
