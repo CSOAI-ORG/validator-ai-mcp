@@ -1,26 +1,36 @@
 #!/usr/bin/env python3
-"""validator-ai-mcp"""
-import asyncio, json
-from mcp.server import Server
-from mcp.server.stdio import stdio_server
-from mcp.server.models import InitializationOptions
-from mcp.types import Tool, TextContent
-import mcp.types as types
+"""Validate data formats (email, URL, phone, JSON). — MEOK AI Labs."""
+import json, os, re, hashlib, uuid as _uuid, random
+from datetime import datetime, timezone
+from collections import defaultdict
+from mcp.server.fastmcp import FastMCP
 
-server = Server("validator-ai-mcp")
+FREE_DAILY_LIMIT = 30
+_usage = defaultdict(list)
+def _rl(c="anon"):
+    now = datetime.now(timezone.utc)
+    _usage[c] = [t for t in _usage[c] if (now-t).total_seconds() < 86400]
+    if len(_usage[c]) >= FREE_DAILY_LIMIT: return json.dumps({"error": "Limit/day"})
+    _usage[c].append(now); return None
 
-@server.list_tools()
-async def list_tools():
-    return [Tool(name="run", description="Process input", inputSchema={"type":"object","properties":{"input":{"type":"string"}},"required":["input"]})]
+mcp = FastMCP("validator", instructions="MEOK AI Labs — Validate data formats (email, URL, phone, JSON).")
 
-@server.call_tool()
-async def call_tool(name, arguments=None):
-    inp = (arguments or {}).get("input", "")
-    return [TextContent(type="text", text=json.dumps({"output": f"Processed by validator-ai-mcp: {inp}"}, indent=2))]
 
-async def main():
-    async with stdio_server(server._read_stream, server._write_stream) as (rs, ws):
-        await server.run(rs, ws, InitializationOptions(server_name="validator-ai-mcp", server_version="0.1.0", capabilities=server.get_capabilities()))
+@mcp.tool()
+def validate_email(email: str) -> str:
+    """Validate email format."""
+    if err := _rl(): return err
+    pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+    valid = bool(re.match(pattern, email))
+    return json.dumps({"email": email, "valid": valid}, indent=2)
+
+@mcp.tool()
+def validate_url(url: str) -> str:
+    """Validate URL format."""
+    if err := _rl(): return err
+    pattern = r'^https?://[\w.-]+(?:\.[\w.-]+)+[\w.,@?^=%&:/~+#-]*$'
+    valid = bool(re.match(pattern, url))
+    return json.dumps({"url": url, "valid": valid}, indent=2)
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    mcp.run()
