@@ -1,0 +1,58 @@
+{
+  "name": "validator-ai",
+  "description": "Validate JSON against schemas, check email deliverability, verify URLs, assess data quality, and validate API responses. Uses RFC-compliant checks and heuristic analysis.",
+  "version": "1.0.0",
+  "protocol_version": "2025-11-25",
+  "publisher": {
+    "name": "MEOK AI Labs",
+    "url": "https://meok.ai",
+    "email": "nicholas@meok.ai"
+  },
+  "repository": "https://github.com/CSOAI-ORG/validator-ai-mcp",
+  "license": "MIT",
+  "transport": [
+    "stdio",
+    "streamable-http"
+  ],
+  "authentication": {
+    "type": "api-key",
+    "free_tier": true,
+    "free_limit": "15 calls/day"
+  },
+  "tools": [
+    {
+      "name": "validate_json",
+      "description": "Validate JSON string, optionally against a JSON Schema. Schema as JSON string."
+    },
+    {
+      "name": "validate_email",
+      "description": "Validate email format, domain structure, and check for disposable addresses."
+    },
+    {
+      "name": "validate_url",
+      "description": "Validate URL format, structure, and security characteristics."
+    },
+    {
+      "name": "validate_data_quality",
+      "description": "Check a JSON dataset for quality issues: nulls, duplicates, type consistency, outliers. Pass data as JSON array of objects."
+    },
+    {
+      "name": "validate_api_response",
+      "description": "Validate an API response body and structure. Required fields as comma-separated string."
+    }
+  ],
+  "categories": [
+    "AI & Machine Learning",
+    "Data & Analytics",
+    "Developer Tools"
+  ],
+  "pricing": {
+    "free": {
+      "calls_per_day": 15
+    },
+    "pro": {
+      "price": "$29/month",
+      "url": "https://meok.ai/pricing"
+    }
+  }
+}
