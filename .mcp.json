@@ -1,11 +1,29 @@
 {
   "name": "validator-ai-mcp",
-  "description": "validator-ai-mcp \u2014 Built by [MEOK AI Labs](https://meok.ai)",
+  "description": "> **By [MEOK AI Labs](https://meok.ai)** \u2014 Validate JSON against schemas, check email deliverability, verify URLs, assess data quality, and val",
   "version": "1.0.0",
   "tools": [
     {
+      "name": "validate_json",
+      "description": "Validate JSON string, optionally against a JSON Schema. Schema as JSON string.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "data": {
+            "type": "string"
+          },
+          "schema": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "data"
+        ]
+      }
+    },
+    {
       "name": "validate_email",
-      "description": "",
+      "description": "Validate email format, domain structure, and check for disposable addresses.",
       "parameters": {
         "type": "object",
         "properties": {
@@ -20,7 +38,7 @@
     },
     {
       "name": "validate_url",
-      "description": "",
+      "description": "Validate URL format, structure, and security characteristics.",
       "parameters": {
         "type": "object",
         "properties": {
@@ -34,17 +52,41 @@
       }
     },
     {
-      "name": "validate_json",
-      "description": "",
+      "name": "validate_data_quality",
+      "description": "Check a JSON dataset for quality issues: nulls, duplicates, type consistency, outliers. Pass data as JSON array of objects.",
       "parameters": {
         "type": "object",
         "properties": {
-          "text": {
+          "data": {
             "type": "string"
           }
         },
         "required": [
-          "text"
+          "data"
+        ]
+      }
+    },
+    {
+      "name": "validate_api_response",
+      "description": "Validate an API response body and structure. Required fields as comma-separated string.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "response_body": {
+            "type": "string"
+          },
+          "expected_status": {
+            "type": "integer"
+          },
+          "expected_content_type": {
+            "type": "string"
+          },
+          "required_fields": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "response_body"
         ]
       }
     }

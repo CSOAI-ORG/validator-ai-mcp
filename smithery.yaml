@@ -1,22 +1,50 @@
 name: validator-ai-mcp
-description: "validator-ai-mcp \u2014 Built by [MEOK AI Labs](https://meok.ai)"
+description: Validate JSON against schemas, check email deliverability, verify URLs,
+  assess data quality, and val
 version: 1.0.0
 tools:
+- name: validate_json
+  description: Validate JSON string, optionally against a JSON Schema. Schema as JSON
+    string.
+  parameters:
+  - name: data
+    type: string
+    required: true
+  - name: schema
+    type: string
+    required: false
 - name: validate_email
-  description: ''
+  description: Validate email format, domain structure, and check for disposable addresses.
   parameters:
   - name: email
     type: string
     required: true
 - name: validate_url
-  description: ''
+  description: Validate URL format, structure, and security characteristics.
   parameters:
   - name: url
     type: string
     required: true
-- name: validate_json
-  description: ''
+- name: validate_data_quality
+  description: 'Check a JSON dataset for quality issues: nulls, duplicates, type consistency,
+    outliers. Pass data as JSON array of objects.'
   parameters:
-  - name: text
+  - name: data
     type: string
     required: true
+- name: validate_api_response
+  description: Validate an API response body and structure. Required fields as comma-separated
+    string.
+  parameters:
+  - name: response_body
+    type: string
+    required: true
+  - name: expected_status
+    type: integer
+    required: false
+  - name: expected_content_type
+    type: string
+    required: false
+  - name: required_fields
+    type: string
+    required: false

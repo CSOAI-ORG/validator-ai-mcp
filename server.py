@@ -37,7 +37,7 @@ VALID_TLDS = {
     "jp", "cn", "in", "br", "nl", "se", "no", "fi", "dk", "it", "es",
 }
 
-mcp = FastMCP("validator-ai-mcp", instructions="Validate JSON against schemas, check email deliverability, verify URLs, assess data quality, and validate API responses. Uses RFC-compliant checks and heuristic analysis.")
+mcp = FastMCP("validator-ai", instructions="Validate JSON against schemas, check email deliverability, verify URLs, assess data quality, and validate API responses. Uses RFC-compliant checks and heuristic analysis.")
 
 
 def _validate_type(value, expected_type: str) -> bool:
@@ -130,7 +130,7 @@ def _validate_schema_recursive(data, schema: dict, path: str = "") -> list:
 
 
 @mcp.tool()
-async def validate_json(data: str, schema: str = "", api_key: str = "") -> str:
+def validate_json(data: str, schema: str = "", api_key: str = "") -> str:
     """Validate JSON string, optionally against a JSON Schema. Schema as JSON string."""
     allowed, msg, tier = check_access(api_key)
     if not allowed:
@@ -189,7 +189,7 @@ async def validate_json(data: str, schema: str = "", api_key: str = "") -> str:
 
 
 @mcp.tool()
-async def validate_email(email: str, api_key: str = "") -> str:
+def validate_email(email: str, api_key: str = "") -> str:
     """Validate email format, domain structure, and check for disposable addresses."""
     allowed, msg, tier = check_access(api_key)
     if not allowed:
@@ -279,7 +279,7 @@ async def validate_email(email: str, api_key: str = "") -> str:
 
 
 @mcp.tool()
-async def validate_url(url: str, api_key: str = "") -> str:
+def validate_url(url: str, api_key: str = "") -> str:
     """Validate URL format, structure, and security characteristics."""
     allowed, msg, tier = check_access(api_key)
     if not allowed:
@@ -400,7 +400,7 @@ async def validate_url(url: str, api_key: str = "") -> str:
 
 
 @mcp.tool()
-async def validate_data_quality(data: str, api_key: str = "") -> str:
+def validate_data_quality(data: str, api_key: str = "") -> str:
     """Check a JSON dataset for quality issues: nulls, duplicates, type consistency, outliers. Pass data as JSON array of objects."""
     allowed, msg, tier = check_access(api_key)
     if not allowed:
@@ -525,7 +525,7 @@ async def validate_data_quality(data: str, api_key: str = "") -> str:
 
 
 @mcp.tool()
-async def validate_api_response(response_body: str, expected_status: int = 200, expected_content_type: str = "application/json", required_fields: str = "", api_key: str = "") -> str:
+def validate_api_response(response_body: str, expected_status: int = 200, expected_content_type: str = "application/json", required_fields: str = "", api_key: str = "") -> str:
     """Validate an API response body and structure. Required fields as comma-separated string."""
     allowed, msg, tier = check_access(api_key)
     if not allowed:
