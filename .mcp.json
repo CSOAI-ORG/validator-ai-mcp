@@ -1,6 +1,6 @@
 {
   "name": "validator-ai-mcp",
-  "description": "> **By [MEOK AI Labs](https://meok.ai)** \u2014 Validate JSON against schemas, check email deliverability, verify URLs, assess data quality, and val",
+  "description": "AI-powered validator ai MCP server for agents. Supports validate json, validate email, validate url. By MEOK AI Labs.",
   "version": "1.0.0",
   "tools": [
     {
