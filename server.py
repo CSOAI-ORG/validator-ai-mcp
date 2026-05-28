@@ -2,13 +2,21 @@
 """Validator AI MCP Server - JSON schema validation, email/URL checking, data quality, and API response validation."""
 
 import sys, os
-sys.path.insert(0, os.path.expanduser('~/clawd/meok-labs-engine/shared'))
 from auth_middleware import check_access
 
 import json, re, time, hashlib
 from collections import defaultdict
 from urllib.parse import urlparse
 from mcp.server.fastmcp import FastMCP
+
+STRIPE_199 = "https://buy.stripe.com/00wfZjcgAeUW4c5cyQ8k90K"
+
+def _add_upgrade_tail(response, tier="free"):
+    """Append upgrade nudge to free-tier success responses."""
+    if isinstance(response, dict) and tier == "free":
+        response["_upgrade_note"] = "Pro tier: unlimited calls + priority support. Upgrade: " + STRIPE_199
+    return response
+
 
 # Rate limiting
 _rate_limits: dict = defaultdict(list)
@@ -134,7 +142,7 @@ def validate_json(data: str, schema: str = "", api_key: str = "") -> str:
     """Validate JSON string, optionally against a JSON Schema. Schema as JSON string."""
     allowed, msg, tier = check_access(api_key)
     if not allowed:
-        return json.dumps({"error": msg, "upgrade_url": "https://meok.ai/pricing"})
+        return json.dumps({"error": msg, "upgrade_url": STRIPE_199})
     if not _check_rate(api_key or "anon"):
         return json.dumps({"error": "Rate limit exceeded. Try again in 60 seconds."})
 
@@ -193,7 +201,7 @@ def validate_email(email: str, api_key: str = "") -> str:
     """Validate email format, domain structure, and check for disposable addresses."""
     allowed, msg, tier = check_access(api_key)
     if not allowed:
-        return json.dumps({"error": msg, "upgrade_url": "https://meok.ai/pricing"})
+        return json.dumps({"error": msg, "upgrade_url": STRIPE_199})
     if not _check_rate(api_key or "anon"):
         return json.dumps({"error": "Rate limit exceeded. Try again in 60 seconds."})
 
@@ -283,7 +291,7 @@ def validate_url(url: str, api_key: str = "") -> str:
     """Validate URL format, structure, and security characteristics."""
     allowed, msg, tier = check_access(api_key)
     if not allowed:
-        return json.dumps({"error": msg, "upgrade_url": "https://meok.ai/pricing"})
+        return json.dumps({"error": msg, "upgrade_url": STRIPE_199})
     if not _check_rate(api_key or "anon"):
         return json.dumps({"error": "Rate limit exceeded. Try again in 60 seconds."})
 
@@ -404,7 +412,7 @@ def validate_data_quality(data: str, api_key: str = "") -> str:
     """Check a JSON dataset for quality issues: nulls, duplicates, type consistency, outliers. Pass data as JSON array of objects."""
     allowed, msg, tier = check_access(api_key)
     if not allowed:
-        return json.dumps({"error": msg, "upgrade_url": "https://meok.ai/pricing"})
+        return json.dumps({"error": msg, "upgrade_url": STRIPE_199})
     if not _check_rate(api_key or "anon"):
         return json.dumps({"error": "Rate limit exceeded. Try again in 60 seconds."})
 
@@ -529,7 +537,7 @@ def validate_api_response(response_body: str, expected_status: int = 200, expect
     """Validate an API response body and structure. Required fields as comma-separated string."""
     allowed, msg, tier = check_access(api_key)
     if not allowed:
-        return json.dumps({"error": msg, "upgrade_url": "https://meok.ai/pricing"})
+        return json.dumps({"error": msg, "upgrade_url": STRIPE_199})
     if not _check_rate(api_key or "anon"):
         return json.dumps({"error": "Rate limit exceeded. Try again in 60 seconds."})
 
@@ -631,5 +639,8 @@ def validate_api_response(response_body: str, expected_status: int = 200, expect
     })
 
 
-if __name__ == "__main__":
+def main():
     mcp.run()
+
+if __name__ == '__main__':
+    main()
