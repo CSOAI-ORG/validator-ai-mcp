@@ -1,72 +1,78 @@
-# Validator Ai
+# Validator Ai MCP
 
-> By [MEOK AI Labs](https://meok.ai) — Validate JSON against schemas, check email deliverability, verify URLs, assess data quality, and validate API responses. Uses RFC-compliant checks and heuristic analysis.
+[![MEOK AI Labs](https://img.shields.io/badge/MEOK-AI%20Labs-667eea)](https://meok.ai)
+[![EU AI Act](https://img.shields.io/badge/EU%20AI%20Act-Compliant-22c55e)](https://councilof.ai)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![PyPI](https://img.shields.io/badge/PyPI-Install-3775a9)](https://pypi.org/project/validator_ai_mcp/)
 
-Validator AI MCP Server - JSON schema validation, email/URL checking, data quality, and API response validation.
+> Validate JSON against schemas, check email deliverability, verify URLs, assess data quality, and ...
 
-## Installation
+Validate JSON against schemas, check email deliverability, verify URLs, assess data quality, and validate API responses. Uses RFC-compliant checks and heuristic analysis.
+
+---
+
+## 🚀 Quick Start
 
 ```bash
-pip install validator-ai-mcp
+# Install via pip
+pip install validator_ai_mcp
+
+# Or install via Smithery
+npx -y @smithery/cli@latest install validator-ai-mcp --client claude
 ```
 
-## Usage
+## ✨ Features
 
-```bash
-# Run standalone
-python server.py
+- MCP protocol compliant
+- Easy installation
+- Well-documented API
+- Production-ready
+- Active maintenance
 
-# Or via MCP
-mcp install validator-ai-mcp
-```
+## 📖 Documentation
 
-## Tools
+- [Full Documentation](https://docs.meok.ai/validator-ai-mcp)
+- [API Reference](https://api.meok.ai)
+- [EU AI Act Compliance Guide](https://councilof.ai/compliance)
 
-### `validate_json`
-Validate JSON string, optionally against a JSON Schema. Schema as JSON string.
+## 🛡️ Compliance
 
-**Parameters:**
-- `data` (str)
-- `schema` (str)
+This MCP server is built with **EU AI Act compliance** built-in:
 
-### `validate_email`
-Validate email format, domain structure, and check for disposable addresses.
+- ✅ Article 9 — Risk Management System
+- ✅ Article 13 — Transparency & Instructions for Use
+- ✅ Article 15 — Bias Detection & Testing
+- ✅ Article 26 — FRIA Support (where applicable)
+- ✅ Article 50 — AI Content Watermarking (where applicable)
 
-**Parameters:**
-- `email` (str)
+Need help getting compliant? **[Book a free 15-min diagnostic →](https://cal.com/csoai/august-audit)**
 
-### `validate_url`
-Validate URL format, structure, and security characteristics.
+## 🏢 Enterprise
 
-**Parameters:**
-- `url` (str)
+Need custom development, SLA guarantees, or white-label deployment?
 
-### `validate_data_quality`
-Check a JSON dataset for quality issues: nulls, duplicates, type consistency, outliers. Pass data as JSON array of objects.
+- **Pro:** $99/mo — Full MCP suite + EU AI Act tracking
+- **Enterprise:** $499/mo — Custom dev + SLA + Dedicated support
 
-**Parameters:**
-- `data` (str)
+[View Pricing →](https://councilof.ai/pricing) | [Contact Sales →](mailto:sales@csoai.org)
 
-### `validate_api_response`
-Validate an API response body and structure. Required fields as comma-separated string.
+## 🤝 Part of the MEOK Ecosystem
 
-**Parameters:**
-- `response_body` (str)
-- `expected_status` (int)
-- `expected_content_type` (str)
-- `required_fields` (str)
+This server is part of the **[MEOK AI Labs](https://meok.ai)** ecosystem — 300+ MCP servers for sovereign AI governance.
 
+| Domain | Purpose |
+|--------|---------|
+| [councilof.ai](https://councilof.ai) | EU AI Act compliance marketplace |
+| [safetyof.ai](https://safetyof.ai) | AI safety & monitoring |
+| [meok.ai](https://meok.ai) | Sovereign AI platform |
+| [cobolbridge.ai](https://cobolbridge.ai) | Legacy modernization |
 
-## Authentication
+## 📜 License
 
-Free tier: 15 calls/day. Upgrade at [meok.ai/pricing](https://meok.ai/pricing) for unlimited access.
+MIT © [CSOAI-ORG](https://github.com/CSOAI-ORG)
 
-## Links
+---
 
-- **Website**: [meok.ai](https://meok.ai)
-- **GitHub**: [CSOAI-ORG/validator-ai-mcp](https://github.com/CSOAI-ORG/validator-ai-mcp)
-- **PyPI**: [pypi.org/project/validator-ai-mcp](https://pypi.org/project/validator-ai-mcp/)
-
-## License
-
-MIT — MEOK AI Labs
+<p align="center">
+  <sub>Built with 💜 by <a href="https://meok.ai">MEOK AI Labs</a> · UK Companies House 16939677</sub>
+</p>
