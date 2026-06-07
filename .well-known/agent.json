@@ -1,0 +1,68 @@
+{
+  "name": "validator-ai-mcp",
+  "description": "AI-powered validator ai MCP server for agents. Supports validate json, validate email, validate",
+  "url": "https://proofof.ai/scorecard/validator-ai-mcp.html",
+  "version": "1.0.5",
+  "protocolVersion": "0.2.0",
+  "provider": {
+    "organization": "MEOK AI Labs",
+    "url": "https://meok.ai"
+  },
+  "capabilities": {
+    "streaming": false,
+    "pushNotifications": false
+  },
+  "defaultInputModes": [
+    "text"
+  ],
+  "defaultOutputModes": [
+    "text"
+  ],
+  "skills": [
+    {
+      "id": "validate_json",
+      "name": "Validate Json",
+      "description": "validate_json via validator-ai-mcp",
+      "tags": [
+        "mcp",
+        "compliance"
+      ]
+    },
+    {
+      "id": "validate_email",
+      "name": "Validate Email",
+      "description": "validate_email via validator-ai-mcp",
+      "tags": [
+        "mcp",
+        "compliance"
+      ]
+    },
+    {
+      "id": "validate_url",
+      "name": "Validate Url",
+      "description": "validate_url via validator-ai-mcp",
+      "tags": [
+        "mcp",
+        "compliance"
+      ]
+    },
+    {
+      "id": "validate_data_quality",
+      "name": "Validate Data Quality",
+      "description": "validate_data_quality via validator-ai-mcp",
+      "tags": [
+        "mcp",
+        "compliance"
+      ]
+    },
+    {
+      "id": "validate_api_response",
+      "name": "Validate Api Response",
+      "description": "validate_api_response via validator-ai-mcp",
+      "tags": [
+        "mcp",
+        "compliance"
+      ]
+    }
+  ]
+}

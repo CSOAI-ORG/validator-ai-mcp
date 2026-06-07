@@ -1,0 +1,23 @@
+{
+  "acpVersion": "0.1",
+  "agent": {
+    "name": "validator-ai-mcp",
+    "description": "AI-powered validator ai MCP server for agents. Supports validate json, validate email, validate",
+    "version": "1.0.5",
+    "provider": "MEOK AI Labs",
+    "interfaces": [
+      {
+        "type": "mcp",
+        "transport": "stdio",
+        "package": "validator-ai-mcp"
+      }
+    ],
+    "capabilities": [
+      "validate_json",
+      "validate_email",
+      "validate_url",
+      "validate_data_quality",
+      "validate_api_response"
+    ]
+  }
+}
