@@ -1,0 +1,36 @@
+# validator-ai-mcp
+# > By [MEOK AI Labs](https://meok.ai) — Validate JSON against schemas, check email deliverability, verify URLs, assess data quality, and validate API responses. Uses RFC-compliant checks and heuristic analysis.
+
+## Install
+```bash
+pip install validator-ai-mcp
+```
+
+## Auth & Rate Limits
+- Free tier: 10 calls/day. No API key required.
+- Pro tier (£79/mo): unlimited + signed attestations.
+- Enterprise (£1,499/mo): white-label.
+
+## Tools
+
+### `validate_json`
+Validate JSON string, optionally against a JSON Schema. Schema as JSON string.
+
+### `validate_email`
+Validate email format, domain structure, and check for disposable addresses.
+
+### `validate_url`
+Validate URL format, structure, and security characteristics.
+
+### `validate_data_quality`
+Check a JSON dataset for quality issues: nulls, duplicates, type consistency, outliers. Pass data as JSON array of objects.
+
+### `validate_api_response`
+Validate an API response body and structure. Required fields as comma-separated string.
+
+
+## Maintainer
+MEOK AI Labs · hello@meok.ai · https://meok.ai · MIT licensed
+
+## Pairs with
+Governance moat: pair this tool with any of MEOK's 38 governance MCPs (EU AI Act, DORA, NIS2, CRA, GDPR, ISO 42001, etc.) for full compliance coverage.

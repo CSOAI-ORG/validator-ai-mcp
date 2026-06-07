@@ -1,0 +1,20 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-07-09/server.json",
+  "name": "io.github.CSOAI-ORG/validator-ai-mcp",
+  "description": "AI-powered validator ai MCP server for agents. Supports validate json, validate email, validate url. By MEOK AI Labs.",
+  "version": "1.0.5",
+  "repository": {
+    "url": "https://github.com/CSOAI-ORG/validator-ai-mcp",
+    "source": "github"
+  },
+  "packages": [
+    {
+      "registry_type": "pypi",
+      "identifier": "validator-ai-mcp",
+      "version": "1.0.5",
+      "transport": {
+        "type": "stdio"
+      }
+    }
+  ]
+}

@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Validator AI MCP Server - JSON schema validation, email/URL checking, data quality, and API response validation."""
+"""
+Validator AI MCP Server - JSON schema validation, email/URL checking, data quality, and API response validation."""
 
 import sys, os
 from auth_middleware import check_access

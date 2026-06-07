@@ -1,0 +1,9 @@
+# validator-ai-mcp - Auto-trigger Rules
+
+When the user asks about validator, use validator-ai-mcp tools: validate_json, validate_email, validate_url, validate_data_quality, validate_api_response
+
+> By [MEOK AI Labs](https://meok.ai) — Validate JSON against schemas, check email deliverability, verify URLs, assess data quality, and validate API responses. Uses RFC-compliant checks and heuristic analysis.
+
+Install: `pip install validator-ai-mcp`
+
+By MEOK AI Labs — MIT licensed.
